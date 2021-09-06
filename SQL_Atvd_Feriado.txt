@@ -1,0 +1,85 @@
+ATIVIDADE SQL FERIADO
+
+7
+
+SELECT t01.nome, t02.veiculo FROM cliente t01 
+INNER JOIN venda t02 ON t01.id_cliente = t02.cliente
+
+8
+
+SELECT * FROM veiculo t01 
+LEFT JOIN venda t02 ON t01.id_veiculo = t02.veiculo
+WHERE t02.veiculo IS null
+
+9
+
+SELECT t01.nome, t03.nome, t03.valor FROM cliente t01 
+INNER JOIN venda t02 ON t01.id_cliente = t02.cliente
+INNER JOIN veiculo t03 ON t02.veiculo = t03.id_veiculo
+WHERE t03.valor > '100.000'
+
+10
+
+SELECT t01.nome, t03.nome, t03.valor FROM cliente t01 
+INNER JOIN venda t02 ON t01.id_cliente = t02.cliente
+INNER JOIN veiculo t03 ON t02.veiculo = t03.id_veiculo
+WHERE t01.nome = 'Danilo'
+
+11
+
+SELECT t01.nome, t03.nome, t03.valor FROM cliente t01 
+INNER JOIN venda t02 ON t01.id_cliente = t02.cliente
+INNER JOIN veiculo t03 ON t02.veiculo = t03.id_veiculo
+WHERE t01.nome = 'Danilo'
+
+12
+
+SELECT t01.nome, t03.nome, t03.valor FROM cliente t01 
+INNER JOIN venda t02 ON t01.id_cliente = t02.cliente
+INNER JOIN veiculo t03 ON t02.veiculo = t03.id_veiculo
+WHERE t01.nome = 'Danilo' and t03.valor < '70.000'
+
+13
+
+SELECT t01.nome, t03.nome, t03.valor FROM cliente t01 
+INNER JOIN venda t02 ON t01.id_cliente = t02.cliente
+INNER JOIN veiculo t03 ON t02.veiculo = t03.id_veiculo
+WHERE t01.nome != 'Danilo'
+
+14
+
+SELECT t01.nome, t03.nome, t03.valor FROM cliente t01 
+INNER JOIN venda t02 ON t01.id_cliente = t02.cliente
+INNER JOIN veiculo t03 ON t02.veiculo = t03.id_veiculo
+WHERE t01.nome != 'Danilo' 
+ORDER BY t03.valor ASC
+
+15
+
+SELECT t01.nome, t03.nome, t03.valor FROM cliente t01 
+INNER JOIN venda t02 ON t01.id_cliente = t02.cliente
+INNER JOIN veiculo t03 ON t02.veiculo = t03.id_veiculo
+WHERE t01.nome != 'Danilo' 
+ORDER BY t03.valor DESC
+
+16
+
+SELECT t01.nome, t03.nome, t03.valor FROM cliente t01 
+INNER JOIN venda t02 ON t01.id_cliente = t02.cliente
+INNER JOIN veiculo t03 ON t02.veiculo = t03.id_veiculo
+WHERE t01.nome != 'Danilo' 
+ORDER BY t03.valor DESC
+LIMIT 3
+
+17
+
+SELECT DISTINCT veiculo.nome FROM veiculo
+
+18
+
+Como a tabela veiculo é referencia para outra tabela (tabela venda) não é possivel, dá erro. 
+ERROR:  cannot truncate a table referenced in a foreign key constraint
+
+19
+
+Funciona, pois a tabela venda não é referencia em nenhuma outra tabela.
